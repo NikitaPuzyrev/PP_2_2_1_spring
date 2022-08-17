@@ -14,7 +14,6 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
     private final SessionFactory sessionFactory;
-
     public UserDaoImp(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
@@ -39,7 +38,7 @@ public class UserDaoImp implements UserDao {
         Query query = sessionFactory.getCurrentSession()
                 .createQuery("from Car car  where (car.series = :seriesParam) and (car.model = :paramModel)");
         ((Query<?>) query).setParameter("seriesParam", series).
-        setParameter("paramModel", model);
+                setParameter("paramModel", model);
 
         List<Car> cars = query.getResultList();
         for (Car car : cars) {
