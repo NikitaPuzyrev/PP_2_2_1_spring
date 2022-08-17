@@ -38,16 +38,13 @@ public class UserDaoImp implements UserDao {
 
         Query query = sessionFactory.getCurrentSession()
                 .createQuery("from Car car  where (car.series = :seriesParam) and (car.model = :paramModel)");
-        ((Query<?>) query).setParameter("seriesParam", series);
-        query.setParameter("paramModel", model);
+        ((Query<?>) query).setParameter("seriesParam", series).
+        setParameter("paramModel", model);
 
         List<Car> cars = query.getResultList();
         for (Car car : cars) {
-            System.out.println("Id = " + car.getId());
-            System.out.println("mod = " + car.getModel());
-            System.out.println("ser = " + car.getSeries());
-            System.out.println("Car" + car.getCarUser());
-            System.out.println();
+            System.out.println(car.getCarUser());
+
         }
     }
 }
