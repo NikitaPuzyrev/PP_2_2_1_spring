@@ -8,12 +8,14 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 
 
 @Repository
 public class UserDaoImp implements UserDao {
     private final SessionFactory sessionFactory;
+
     public UserDaoImp(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
@@ -33,17 +35,18 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public void userCar(String model, double series) {
-
+    public List<User> userCar(String model, double series) {
+        List<User> users = new ArrayList<>();
         Query query = sessionFactory.getCurrentSession()
                 .createQuery("from Car car  where (car.series = :seriesParam) and (car.model = :paramModel)");
-        ((Query<?>) query).setParameter("seriesParam", series).
+        query.setParameter("seriesParam", series).
                 setParameter("paramModel", model);
 
         List<Car> cars = query.getResultList();
         for (Car car : cars) {
-            System.out.println(car.getCarUser());
-
+         //   System.out.println(car.getCarUser());
+            users.add(car.getCarUser());
         }
+        return users;
     }
 }
