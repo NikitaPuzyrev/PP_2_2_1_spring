@@ -27,7 +27,7 @@ public class MainApp {
             System.out.println("Car" + user.getUsCar());
             System.out.println();
         }
-        System.out.println(userService.userCar("YOmobil4", 12));
+        System.out.println(userService.userCar("YOmobil4", 12.0));
         context.close();
     }
 }

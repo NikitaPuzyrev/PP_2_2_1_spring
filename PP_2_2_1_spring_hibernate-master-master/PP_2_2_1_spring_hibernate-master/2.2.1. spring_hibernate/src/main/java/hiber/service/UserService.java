@@ -10,7 +10,7 @@ public interface UserService {
 
     List<User> listUsers();
 
-    List<User> userCar(String model, double series);
+    User userCar(String model, double series);
 
 }
 

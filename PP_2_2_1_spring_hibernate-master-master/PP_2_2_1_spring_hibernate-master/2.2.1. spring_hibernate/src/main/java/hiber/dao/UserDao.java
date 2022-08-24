@@ -9,5 +9,5 @@ import java.util.List;
 public interface UserDao {
    void add(User user, Car car);
    List<User> listUsers();
-   List<User> userCar(String model, double series);
+   User userCar(String model, double series);
 }
